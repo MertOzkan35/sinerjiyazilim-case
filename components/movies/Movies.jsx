@@ -436,7 +436,7 @@ function MoviesPage() {
         className="bg-[#1b2228] flex flex-row justify-center items-center  "
         rowsPerPageOptions={[5, 10, 15]}
         component="div"
-        count={filterData.length}
+        count={data.length}
         page="1"
         onPageChange={handleChangePage}
         rowsPerPage={rowsPerPage}
