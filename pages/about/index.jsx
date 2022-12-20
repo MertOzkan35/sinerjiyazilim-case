@@ -1,6 +1,6 @@
 import React from "react";
 import Aboutpage from "../../components/about/About";
-const Index = ({ categoryList, productList }) => {
+const Index = () => {
   return (
     <div>
       <Aboutpage />
