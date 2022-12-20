@@ -1,11 +1,12 @@
 import React from "react";
 import DrawerAppBar from "../navbar/Navbar";
 import Link from "next/link";
+import Navbar from "../navbar/Navbar2";
 
 function Homepage() {
   return (
     <div className="w-100%  h-100%">
-      <DrawerAppBar />
+      <Navbar />
       <div className="w-full h-[1300px] justify-center items-center relative  flex flex-col bg-[#14181d]">
         <div className=" w-3/4  relative  leading-normal flex justify-center  text-white text-center font-bold text-5xl  ">
           Track films you’ve watched. Save those you want to see. Tell your

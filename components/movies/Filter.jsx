@@ -3,7 +3,7 @@ import React from "react";
 function Filter(props) {
   return (
     <div>
-      <div className="w-full h-full bg-[#1b2228] flex flex-col sm:flex-row justify-center sm:justify-between items-center p-20 mt-[60px]">
+      <div className="w-full h-full bg-[#1b2228] flex flex-col sm:flex-row justify-center sm:justify-between items-center p-20 ">
         <div className="  flex flex-col sm:flex-row text-lg  text-[#899aa9] ">
           <p>BROWSE BY</p>
           <div className="border-2 sm:mt-0 mt-4 border-[#232a31] flex text-center  sm:ml-4">

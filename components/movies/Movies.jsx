@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import TablePagination from "@mui/material/TablePagination";
 import Filter from "./Filter";
+import Navbar from "../navbar/Navbar2";
 function MoviesPage() {
   const data = [
     {
@@ -399,7 +400,7 @@ function MoviesPage() {
 
   return (
     <div className="w-100%  h-100% ">
-      <DrawerAppBar />
+      <Navbar />
       <Filter ChangeYear={YearSelectValue} FilmName={FilmName} />
       <div className=" w-full h-full flex flex-col   ">
         <div className="w-full h-full pt-8  bg-[#1b2228] px-8 pb-8  grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6  ">
