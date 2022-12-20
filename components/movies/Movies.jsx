@@ -401,9 +401,7 @@ function MoviesPage() {
     <div className="w-100%  h-100% ">
       <DrawerAppBar />
       <Filter ChangeYear={YearSelectValue} FilmName={FilmName} />
-      <div className=" w-full h-full flex flex-col mt-[50px]  ">
-        <div className="w-full  h-[102px] sm:h-[92px] bg-[#14181c]"></div>
-
+      <div className=" w-full h-full flex flex-col   ">
         <div className="w-full h-full pt-8  bg-[#1b2228] px-8 pb-8  grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6  ">
           {(rowsPerPage > 0
             ? filterData.slice(
@@ -433,11 +431,11 @@ function MoviesPage() {
         </div>
       </div>
       <TablePagination
-        className="bg-[#1b2228] flex flex-row justify-center items-center  "
+        className="bg-[#1b2228] flex flex-row justify-center items-center h-[100px]  "
         rowsPerPageOptions={[5, 10, 15]}
         component="div"
-        count={data.length}
-        page="1"
+        count={filterData.length}
+        page={page}
         onPageChange={handleChangePage}
         rowsPerPage={rowsPerPage}
         onRowsPerPageChange={handleChangeRowsPerPage}
