@@ -1,12 +1,51 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import DrawerAppBar from "../navbar/Navbar";
 import Link from "next/link";
 import Navbar from "../navbar/Navbar2";
+import Menu from "../navbar/Menu";
+import Footer from "../footer/Footer";
 
 function Aboutpage() {
+  // scroll
+  const [show, setShow] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  const controlNavbar = () => {
+    if (typeof window !== "undefined") {
+      if (window.scrollY > lastScrollY) {
+        // if scroll down hide the navbar
+        setShow(false);
+      } else {
+        // if scroll up show the navbar
+        setShow(true);
+      }
+
+      // remember current page location to use in the next move
+      setLastScrollY(window.scrollY);
+    }
+  };
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", controlNavbar);
+
+      // cleanup function
+      return () => {
+        window.removeEventListener("scroll", controlNavbar);
+      };
+    }
+  }, [lastScrollY]);
+  // scroll
   return (
-    <div className="w-full  h-full">
+    <div className="w-full  h-full bg-[#1b2228]">
       <Navbar />
+      <div
+        className={` text-white sticky top-20 w-[100px]  z-50 active ${
+          show && "hidden"
+        }  `}
+      >
+        <Menu />
+      </div>
       <div className="flex flex-col w-full h-full py-40 px-16  justify-center items-center text-center bg-[#1b2228] text-white gap-16 ">
         <h1 className=" text-5xl ">About Us Page</h1>
         <p className="text-3xl">Some text about who we are and what we do.</p>
@@ -33,6 +72,7 @@ function Aboutpage() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

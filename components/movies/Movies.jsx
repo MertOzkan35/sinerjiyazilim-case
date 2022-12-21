@@ -5,6 +5,8 @@ import Image from "next/image";
 import TablePagination from "@mui/material/TablePagination";
 import Filter from "./Filter";
 import Navbar from "../navbar/Navbar2";
+import Menu from "../navbar/Menu";
+import Footer from "../footer/Footer";
 function MoviesPage() {
   const data = [
     {
@@ -395,15 +397,52 @@ function MoviesPage() {
     }
   };
   // filter
-  console.log(data);
-  console.log(filterData);
 
+  // scroll
+  const [show, setShow] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  const controlNavbar = () => {
+    if (typeof window !== "undefined") {
+      if (window.scrollY > lastScrollY) {
+        // if scroll down hide the navbar
+        setShow(false);
+      } else {
+        // if scroll up show the navbar
+        setShow(true);
+      }
+
+      // remember current page location to use in the next move
+      setLastScrollY(window.scrollY);
+    }
+  };
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", controlNavbar);
+
+      // cleanup function
+      return () => {
+        window.removeEventListener("scroll", controlNavbar);
+      };
+    }
+  }, [lastScrollY]);
+  // scroll
   return (
-    <div className="w-100%  h-100% ">
+    <div className="w-100%  h-100%  bg-[#1b2228] ">
       <Navbar />
+
+      <div
+        className={` text-white sticky top-20 w-[100px]  z-50 active ${
+          show && "hidden"
+        }  `}
+      >
+        <Menu />
+      </div>
+
       <Filter ChangeYear={YearSelectValue} FilmName={FilmName} />
       <div className=" w-full h-full flex flex-col   ">
-        <div className="w-full h-full pt-8  bg-[#1b2228] px-8 pb-8  grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6  ">
+        <div className="w-full h-full pt-8  bg-[#1b2228] px-12 pb-8  grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5  ">
           {(rowsPerPage > 0
             ? filterData.slice(
                 page * rowsPerPage,
@@ -432,7 +471,8 @@ function MoviesPage() {
         </div>
       </div>
       <TablePagination
-        className="bg-[#1b2228] flex flex-row justify-center items-center h-[100px]  "
+        sx={{ button: { color: "#ffffff" } }}
+        className="bg-[#1b2228] text-white flex  flex-row justify-center items-center h-[100px]  "
         rowsPerPageOptions={[5, 10, 15]}
         component="div"
         count={filterData.length}
@@ -441,6 +481,7 @@ function MoviesPage() {
         rowsPerPage={rowsPerPage}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
+      <Footer />
     </div>
   );
 }
