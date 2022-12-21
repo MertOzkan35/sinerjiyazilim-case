@@ -80,22 +80,30 @@ function AddMovie() {
           />
         </div>
         <div className="flex flex-col w-full justify-center mt-8 items-center text-sm ">
-          <span className="font-semibold text-lg mb-[2px]"> Category Name</span>
-          <input
-            type="text"
-            className="border-2 p-1 w-3/4 h-12 rounded-3xl text-sm px-4 outline-none"
-            placeholder="Write a Category..."
+          <select
             onChange={(e) => setCategory(e.target.value)}
-          />
+            className="border-2 p-1 w-3/4 h-12 rounded-3xl text-sm px-4 outline-none "
+          >
+            <option>Genre</option>
+            <option>Action</option>
+            <option>Comedy</option>
+            <option>Drama</option>
+            <option>Horror</option>
+            <option>Science Fiction</option>
+            <option>Fantasy</option>
+          </select>
         </div>
         <div className="flex flex-col w-full justify-center mt-8 items-center text-sm ">
-          <span className="font-semibold text-lg mb-[2px]"> Movie Year</span>
-          <input
-            type="text"
-            className="border-2 p-1 w-3/4 h-12 rounded-3xl text-sm px-4 outline-none"
-            placeholder="Write a Year..."
+          <select
             onChange={(e) => setYear(e.target.value)}
-          />
+            className="border-2 p-1 w-3/4 h-12 rounded-3xl text-sm px-4 outline-none "
+          >
+            <option>Year</option>
+            <option>2020s</option>
+            <option>2010s</option>
+            <option>2000s</option>
+            <option>Older...</option>
+          </select>
         </div>
         <button
           className="w-1/2 rounded-3xl mt-10 h-10 bg-[#2563eb]"
