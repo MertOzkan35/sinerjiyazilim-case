@@ -7,7 +7,9 @@ import Filter from "./Filter";
 import Navbar from "../navbar/Navbar2";
 import Menu from "../navbar/Menu";
 import Footer from "../footer/Footer";
-function MoviesPage() {
+import axios from "axios";
+import { handle } from "express/lib/router";
+const MoviesPage = () => {
   const data = [
     {
       Category: "Drama",
@@ -341,6 +343,21 @@ function MoviesPage() {
     },
   ];
 
+  useEffect(() => {
+    const handleCreate = async (e) => {
+      try {
+        const res = await axios.post(
+          `${process.env.NEXT_PUBLIC_API_URL}/movies`,
+          { Name: "merttttttttttttt" }
+        );
+      } catch (err) {
+        console.log(err);
+      }
+      console.log("x");
+    };
+    handleCreate();
+  });
+
   // pagination
   const [page, setPage] = React.useState(2);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -484,6 +501,6 @@ function MoviesPage() {
       <Footer />
     </div>
   );
-}
+};
 
 export default MoviesPage;
