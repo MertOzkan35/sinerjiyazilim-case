@@ -9,7 +9,7 @@ import Menu from "../navbar/Menu";
 import Footer from "../footer/Footer";
 import axios from "axios";
 import { handle } from "express/lib/router";
-const MoviesPage = () => {
+const MoviesPage = ({ MovieList }) => {
   const data = [
     {
       Category: "Drama",
@@ -342,7 +342,7 @@ const MoviesPage = () => {
       Director: "Quentin Tarantino",
     },
   ];
-
+  console.log(MovieList);
   useEffect(() => {
     const handleCreate = async (e) => {
       try {
@@ -374,7 +374,8 @@ const MoviesPage = () => {
 
   // filter
 
-  const [filterData, setFilterData] = useState(data);
+  const [filterData, setFilterData] = useState(MovieList);
+  console.log(filterData);
   const [SelectsValue, setSelectsValue] = useState({ year: "", genre: "" });
   const YearSelectValue = async (event) => {
     let { year, genre } = SelectsValue;
@@ -390,8 +391,8 @@ const MoviesPage = () => {
   };
   const FilmName = (event) => {
     const name = event.toLowerCase();
-    setFilterData(data);
-    setFilterData(data.filter((item) => item.Name.includes(name)));
+    setFilterData(MovieList);
+    setFilterData(MovieList.filter((item) => item.name.includes(name)));
   };
 
   useEffect(() => {
@@ -400,15 +401,15 @@ const MoviesPage = () => {
 
   const filter = () => {
     if (SelectsValue.year === "Year" && SelectsValue.genre === "Genre") {
-      setFilterData(data);
+      setFilterData(MovieList);
     } else if (SelectsValue.genre !== "" || SelectsValue.year !== "") {
       setFilterData(
-        data.filter((item) =>
+        MovieList.filter((item) =>
           SelectsValue.genre !== "" && SelectsValue.year !== ""
-            ? item.Category === SelectsValue?.genre &&
-              item.Part === SelectsValue?.year
-            : item.Category === SelectsValue?.genre ||
-              item.Part === SelectsValue?.year
+            ? item.category === SelectsValue?.genre &&
+              item.year === SelectsValue?.year
+            : item.category === SelectsValue?.genre ||
+              item.year === SelectsValue?.year
         )
       );
     }
@@ -476,11 +477,7 @@ const MoviesPage = () => {
                   href="/movies"
                   className="absolute w-[9rem] h-[13rem] sm:w-[11rem]  sm:h-[16rem] xl:w-[13rem] xl:h-[18rem]"
                 >
-                  <Image
-                    className="absolute w-[9rem] h-[13rem] sm:w-[11rem]  sm:h-[16rem] xl:w-[13rem] xl:h-[18rem] border-2 border-[#1b2228] hover:border-[#00b020] rounded-3xl object-cover "
-                    src={require(`../../layout/images/${element.img}`)}
-                    alt=""
-                  />
+                  <Image src={element.img} alt="" layout="fill" priority />
                 </Link>
               </div>
             );

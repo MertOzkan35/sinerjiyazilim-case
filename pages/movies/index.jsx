@@ -5,7 +5,7 @@ const Index = ({ MovieList }) => {
   console.log(MovieList);
   return (
     <div>
-      <MoviesPage />
+      <MoviesPage MovieList={MovieList} />
     </div>
   );
 };
