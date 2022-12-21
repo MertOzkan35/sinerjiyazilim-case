@@ -143,7 +143,7 @@ const MoviesPage = ({ MovieList }) => {
         className="bg-[#1b2228] text-white flex  flex-row justify-center items-center h-[100px]  "
         rowsPerPageOptions={[5, 10, 15]}
         component="div"
-        count={MovieList.length}
+        count={filterData.length}
         page={page}
         onPageChange={handleChangePage}
         rowsPerPage={rowsPerPage}
