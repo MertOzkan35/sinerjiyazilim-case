@@ -2,6 +2,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
+import { toast } from "react-toastify";
 
 function AddMovie() {
   const [name, setName] = useState("");
@@ -46,7 +47,7 @@ function AddMovie() {
       );
 
       if (res.status === 200) {
-        console.log("başarılı");
+        toast.success("Movie Added!");
       }
     } catch (err) {
       console.log("başarısız");

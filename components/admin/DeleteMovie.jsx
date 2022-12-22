@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import axios from "axios";
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 const DeleteMovie = () => {
   const [movies, setMovies] = useState([]);
@@ -13,7 +13,7 @@ const DeleteMovie = () => {
           `${process.env.NEXT_PUBLIC_API_URL}/movies/${id}`
         );
         if (res.status === 200) {
-          // toast.success("Product Deleted!");
+          toast.success("Movie Deleted!");
           getProducts();
         }
       }
