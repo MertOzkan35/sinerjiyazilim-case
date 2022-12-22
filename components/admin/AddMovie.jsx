@@ -40,7 +40,6 @@ function AddMovie() {
         year,
       };
 
-      console.log(newMovie);
       const res = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/movies`,
         newMovie

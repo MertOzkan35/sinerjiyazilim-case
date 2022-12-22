@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import DrawerAppBar from "../navbar/Navbar";
 import Link from "next/link";
 import Image from "next/image";
 import TablePagination from "@mui/material/TablePagination";
@@ -7,11 +6,8 @@ import Filter from "./Filter";
 import Navbar from "../navbar/Navbar2";
 import Menu from "../navbar/Menu";
 import Footer from "../footer/Footer";
-import axios from "axios";
-import { handle } from "express/lib/router";
-const MoviesPage = ({ MovieList }) => {
-  console.log(MovieList);
 
+const MoviesPage = ({ MovieList }) => {
   // pagination
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(15);

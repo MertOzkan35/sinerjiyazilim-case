@@ -2,7 +2,6 @@ import React from "react";
 import MoviesPage from "../../components/movies/Movies";
 import axios from "axios";
 const Index = ({ MovieList }) => {
-  console.log(MovieList);
   return (
     <div>
       <MoviesPage MovieList={MovieList} />

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
+import Footer from "../footer/Footer";
 
 function LoginPage() {
   const [userName, setUserName] = useState("");
@@ -14,7 +15,7 @@ function LoginPage() {
     }
   }
   return (
-    <div className="w-full h-[1000px] flex justify-center py-20 bg-[#1b2228]  items-center">
+    <div className="w-full h-[1200px] flex justify-center py-20 bg-[#1b2228]  items-center">
       <div className=" w-full sm:w-3/4 md:w-1/2  h-3/4  rounded-2xl flex flex-col justify-center gap-10 items-center bg-[#14181c] bg-opacity-40 p-11 border-2 border-[#14181c]">
         <div className=" w-full h-1/4 flex justify-center items-center flex-col  gap-4">
           <p className=" text-white font-bold w-full  text-3xl flex justify-center items-center   text-center mb-3  ">
@@ -58,6 +59,7 @@ function LoginPage() {
           </Link>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
