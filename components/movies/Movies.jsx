@@ -25,7 +25,7 @@ const MoviesPage = ({ MovieList }) => {
   // filter
 
   const [filterData, setFilterData] = useState(MovieList);
-  console.log(filterData);
+
   const [SelectsValue, setSelectsValue] = useState({ year: "", genre: "" });
   const YearSelectValue = async (event) => {
     let { year, genre } = SelectsValue;
