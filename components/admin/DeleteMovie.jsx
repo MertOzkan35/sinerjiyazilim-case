@@ -35,14 +35,17 @@ const DeleteMovie = () => {
     getProducts();
   }, []);
   return (
-    <div className="lg:p-8 flex-1 lg:mt-0 mt-5">
-      <h1 addClass="text-[40px]">Movies</h1>
-      <div className="overflow-auto max-h-[400px] w-full mt-5">
+    <div className="lg:p-8 flex-1 lg:mt-0 mt-0 mb-10">
+      <h1 className="text-[40px] font-bold ">Movies</h1>
+      <div className="overflow-auto max-h-[700px] w-full mt-5">
         <table className="w-full text-sm text-center text-gray-500 xl:min-w-[1000px] ">
-          <thead className="text-xs text-gray-400 uppercase bg-gray-700">
+          <thead className="text-xl text-gray-400 uppercase bg-gray-700">
             <tr>
               <th scope="col" className="py-3 px-6">
                 Image
+              </th>
+              <th scope="col" className="py-3 px-6">
+                Id
               </th>
               <th scope="col" className="py-3 px-6">
                 Name
@@ -50,13 +53,16 @@ const DeleteMovie = () => {
               <th scope="col" className="py-3 px-6">
                 Category
               </th>
+              <th scope="col" className="py-3 px-6">
+                Delete
+              </th>
             </tr>
           </thead>
           <tbody>
             {movies.length > 0 &&
               movies.map((movie) => (
                 <tr
-                  className="transition-all bg-secondary border-gray-700 hover:bg-primary"
+                  className="transition-all bg-gray-700  border-gray-700 hover:bg-primary"
                   key={movie._id}
                 >
                   <td className="py-4 px-6 font-medium whitespace-nowrap hover:text-white flex items-center gap-x-1 justify-center">
@@ -70,15 +76,15 @@ const DeleteMovie = () => {
                   <td className="py-4 px-6 font-medium whitespace-nowrap hover:text-white">
                     {movie._id.substring(0, 5)}...
                   </td>
-                  <td className="py-4 px-6 font-medium whitespace-nowrap hover:text-white">
+                  <td className="py-4 text-[20px] px-6 font-medium whitespace-nowrap hover:text-white">
                     {movie.name}
                   </td>
-                  <td className="py-4 px-6 font-medium whitespace-nowrap hover:text-white">
+                  <td className="py-4 text-[20px] px-6 font-medium whitespace-nowrap hover:text-white">
                     {movie.category}
                   </td>
-                  <td className="py-4 px-6 font-medium whitespace-nowrap hover:text-white">
+                  <td className="py-4 text-[20px] px-6 font-medium whitespace-nowrap hover:text-white">
                     <button
-                      className="btn-primary !bg-danger"
+                      className="w-[100px] h-12 bg-slate-600 rounded-2xl"
                       onClick={() => handleDelete(movie._id)}
                     >
                       Delete
